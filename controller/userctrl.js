@@ -55,10 +55,10 @@ const getauser = asynchandler(async(req,res)=>{
 
 //update a user
 const updateauser = asynchandler(async(req,res)=>{
-    const {id} = req.params;
+    const {_id} = req.user;
     try{
         const updateduser = await user.findByIdAndUpdate(
-        id, 
+        _id, 
         {
             firstname: req?.body?.firstname,
             lastname: req?.body?.lastname,
@@ -87,6 +87,9 @@ const deleteauser = asynchandler(async(req,res)=>{
     }
 });
 
+const blockuser = asynchandler(async(req,res)=>{});
+const unblockuser = asynchandler(async(req,res)=>{});
+
 module.exports={
      createuser, 
      loginuserctrl, 
@@ -94,5 +97,6 @@ module.exports={
      getauser, 
      deleteauser, 
      updateauser, 
-
+     blockuser, 
+     unblockuser,
 };
